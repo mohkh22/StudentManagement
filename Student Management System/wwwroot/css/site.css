@@ -1,0 +1,70 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.logo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    letter-spacing: 10px;
+    font-size:28px;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .logo .letter {
+     transition: transform 0.3s, color 0.3s;
+ }
+
+ .logo .letter:hover {
+     color: #ff6a00;
+     transform: scale(1.2);
+ }
+
+ .nh{
+     background-color:#9ac7f7;
+ }
+
+
+ .hv{
+     font-weight:bolder;
+     font-size:20px;
+ }
+
+
+.hv:hover {
+    color: #3498db;
+    transform: scale(1.2);
+    border-radius:8px;
+    background-color:#d5d5d5; 
+}

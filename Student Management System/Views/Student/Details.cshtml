@@ -1,0 +1,44 @@
+﻿@model Studentmanage.Entities.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card w-50 mx-auto bg-dark text-light">
+    <div class="card-header mx-auto">
+        <h3 class="card-title"> Details Student </h3>
+    </div>
+    <hr />
+    <div class="card-body fw-bold ">
+         <dl class="row">
+             <dt class = "col-sm-2">
+                 @Html.DisplayNameFor(model => model.Name)
+             </dt>
+             <dd class = "col-sm-10">
+                 @Html.DisplayFor(model => model.Name)
+             </dd>
+             <dt class = "col-sm-2">
+                 @Html.DisplayNameFor(model => model.Age)
+             </dt>
+             <dd class = "col-sm-10">
+                 @Html.DisplayFor(model => model.Age)
+             </dd>
+             <dt class = "col-sm-2">
+                 @Html.DisplayNameFor(model => model.Grade)
+             </dt>
+             <dd class = "col-sm-10">
+                 @Html.DisplayFor(model => model.Grade)
+             </dd>
+             <dt class = "col-sm-2">
+                 @Html.DisplayNameFor(model => model.EnrollmentDate)
+             </dt>
+             <dd class = "col-sm-10">
+                 @Html.DisplayFor(model => model.EnrollmentDate)
+             </dd>
+         </dl>
+     </div >
+    <div class="w-auto d-flex justify-content-end m-4">
+                <a asp-action="Index" class="btn btn-outline-primary">Back </a>
+     </div>
+
+ </div>

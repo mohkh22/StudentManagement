@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Student>
+
+@if (@ViewData["CurrentGrade"] == null)
+{
+    ViewData["CurrentGrade"] ="Grade";
+}
+
+
+
+
+<div class="container border border-2 p-5 mt-5">
+
+    <div class="d-flex justify-content-between">
+        <h2>Student Management </h2>
+
+        <div>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <div class="btn-group ">
+            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Export
+            </button>
+            <ul class="dropdown-menu">
+                <li>  <a  class="dropdown-item" asp-action="ExportToExcel" class="btn btn-secondary">Excel</a></li>
+                <li>  <a class="dropdown-item" asp-action="ExportToPdf" class="btn btn-secondary">Pdf</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <hr />
+    <br />
+
+    <div class="w-100 d-flex justify-content-between">
+        <div class="align-self-lg-start w-100">
+            <form method="get">
+                <input name="search" value="@ViewData["CurrentSearch"]" style=" border-radius:5px; padding:5px;" placeholder="Enter Name"/>
+                <button type="submit" asp-action="Index" class="btn btn-outline-secondary">Search</button>
+                <a asp-action="Index" class="btn btn-outline-info" >All Student</a>
+            </form>
+        </div>
+
+
+        <div class="btn-group mx-2">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                @ViewData["CurrentGrade"]
+            </button>
+            <ul class="dropdown-menu" >
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade=""  >All</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="A+"  >A+</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="A"  >A</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="B+"  >B+</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="B"  >B</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="C+"  >C+</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="C"  >C</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="D+"  >D+</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="D"  >D</a></li>
+                    <li><a class="dropdown-item"asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]"   asp-route-date="@ViewData["CurrentDate"]" asp-route-Fgrade="F"  >F</a></li>
+                   
+             </ul>
+       </div>
+
+        <div class="btn-group ">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Date
+            </button>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]" asp-route-Fgrade="@ViewData["CurrentGrade"]"
+                asp-route-date="Asc">New</a></li>
+                <li><a class="dropdown-item" asp-controller="Student" asp-action="Index" asp-route-search="@ViewData["CurrentSearch"]" asp-route-Fgrade="@ViewData["CurrentGrade"]"
+                asp-route-date="Desc">Old</a></li>
+            </ul>
+        </div>
+            
+
+
+
+     
+</div>
+<table class="table">
+        <thead class="fw-bolder">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    
+    </tbody>
+</table>
+</div>
